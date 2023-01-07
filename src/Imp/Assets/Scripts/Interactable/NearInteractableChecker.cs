@@ -6,7 +6,7 @@ namespace Imp
 {
     internal sealed class NearInteractableChecker : ITickable
     {
-        private readonly IInteractablesHolder _interactableHolder;
+        private readonly InteractablesHolder _interactableHolder;
         private readonly ImpSettings _impSettings;
         private readonly Transform _impTransform;
 
@@ -15,7 +15,7 @@ namespace Imp
         public bool HasNearInteractable { get; private set; }
         public IReadOnlyReactiveProperty<Interactable> NearInteractable => _nearInteractable;
 
-        public NearInteractableChecker(IInteractablesHolder interactableHolder, ImpGameObject impGameObject, ImpSettings impSettings)
+        public NearInteractableChecker(InteractablesHolder interactableHolder, ImpGameObject impGameObject, ImpSettings impSettings)
         {
             _interactableHolder = interactableHolder;
             _impSettings = impSettings;

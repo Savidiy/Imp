@@ -133,8 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 101538992}
   - component: {fileID: 101538991}
-  - component: {fileID: 101538993}
-  - component: {fileID: 101538994}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -185,31 +183,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &101538993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 101538990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a65525f43f4413392c27307ef5d2839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &101538994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 101538990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faeac45d8d904ad6ab725d28474edff5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactInfoPrefab: {fileID: 7807346173269223471, guid: b2f7741cdab79484dbc0874a5160f29b, type: 3}
 --- !u!1 &151817720
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,8 +265,8 @@ MonoBehaviour:
   _impSettings: {fileID: 11400000, guid: 3511740fb43864746ba512a40bf300b9, type: 2}
   _itemsSpriteData: {fileID: 11400000, guid: d83c6f69cd41ec8479ad3b4f9946284a, type: 2}
   _inventoryView: {fileID: 1013524140}
+  _interactInfoPrefab: {fileID: -2829052632306564650, guid: b2f7741cdab79484dbc0874a5160f29b, type: 3}
   _questScrollView: {fileID: 624368030}
-  _interactablesHolder: {fileID: 101538993}
 --- !u!1001 &227351004
 PrefabInstance:
   m_ObjectHideFlags: 0

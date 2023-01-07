@@ -1,38 +1,34 @@
 ﻿using System;
 using UniRx;
 using UnityEngine;
-using Zenject;
 
 namespace Imp
 {
-    internal sealed class InteractInfoDrawer : MonoBehaviour
+    internal sealed class InteractInfoDrawer : IDisposable
     {
-        [SerializeField] private GameObject _interactInfoPrefab;
-        
-        private NearInteractableChecker _nearInteractableChecker;
-        private GameObject _infoUI;
-        private IDisposable _subscribe;
+        private readonly NearInteractableChecker _nearInteractableChecker;
+        private readonly GameObject _interactInfo;
+        private readonly IDisposable _subscribe;
 
-        [Inject]
-        public void Construct(NearInteractableChecker nearInteractableChecker)
+        public InteractInfoDrawer(NearInteractableChecker nearInteractableChecker, InteractInfo interactInfo)
         {
-            _infoUI = Instantiate(_interactInfoPrefab);
+            _interactInfo = interactInfo.gameObject;
             _nearInteractableChecker = nearInteractableChecker;
             _subscribe = _nearInteractableChecker.NearInteractable.Subscribe(OnSelectedPickUpChange);
         }
-        
+
         private void OnSelectedPickUpChange(Interactable interactable)
         {
-            _infoUI.SetActive(_nearInteractableChecker.HasNearInteractable);
-            
+            _interactInfo.SetActive(_nearInteractableChecker.HasNearInteractable);
+
             if (!_nearInteractableChecker.HasNearInteractable)
                 return;
-        
+
             Vector3 position = interactable.BubblePosition.position;
-            _infoUI.transform.position = position;
+            _interactInfo.transform.position = position;
         }
 
-        private void OnDestroy()
+        public void Dispose()
         {
             _subscribe?.Dispose();
         }

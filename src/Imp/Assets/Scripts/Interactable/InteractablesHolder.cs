@@ -4,20 +4,20 @@ using UnityEngine;
 
 namespace Imp
 {
-    internal sealed class InteractablesHolder : MonoBehaviour, IInteractablesHolder
+    internal sealed class InteractablesHolder
     {
-        private List<Interactable> _interactables;
+        private readonly List<Interactable> _interactables;
         public IReadOnlyList<Interactable> Interactables => _interactables;
 
-        private void Awake()
+        public InteractablesHolder()
         {
-            _interactables = FindObjectsOfType<Interactable>().ToList();
+            _interactables = Object.FindObjectsOfType<Interactable>().ToList();
         }
 
         public void Remove(Interactable interactable)
         {
             _interactables.Remove(interactable);
-            Destroy(interactable.gameObject);
+            Object.Destroy(interactable.gameObject);
         }
     }
 }

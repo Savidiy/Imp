@@ -10,8 +10,8 @@ namespace Imp
         public ImpSettings _impSettings;
         public ItemsSpriteData _itemsSpriteData;
         public InventoryView _inventoryView;
+        public InteractInfo _interactInfoPrefab;
         public QuestScrollView _questScrollView;
-        public InteractablesHolder _interactablesHolder;
 
         public override void InstallBindings()
         {
@@ -22,10 +22,15 @@ namespace Imp
                 .InstantiatePrefabForComponent<ImpGameObject>(_impPrefab, _startPoint.position, Quaternion.identity, null);
             Container.Bind<ImpGameObject>().FromInstance(impGameObject);
 
-            Container.Bind<IInteractablesHolder>().FromInstance(_interactablesHolder);
+            var interactInfo = Container
+                .InstantiatePrefabForComponent<InteractInfo>(_interactInfoPrefab);
+            Container.Bind<InteractInfo>().FromInstance(interactInfo);
+
             Container.Bind<InventoryView>().FromInstance(_inventoryView);
             Container.Bind<QuestScrollView>().FromInstance(_questScrollView);
 
+            Container.BindInterfacesAndSelfTo<InteractInfoDrawer>().AsSingle();
+            Container.BindInterfacesAndSelfTo<InteractablesHolder>().AsSingle();
             Container.BindInterfacesAndSelfTo<NearInteractableChecker>().AsSingle();
             Container.BindInterfacesAndSelfTo<ImpInteract>().AsSingle();
             Container.BindInterfacesAndSelfTo<ImpMove>().AsSingle();

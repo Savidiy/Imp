@@ -7,13 +7,13 @@ namespace Imp
     internal sealed class PickUpInteractLogic : MonoBehaviour, IInteractLogic
     {
         private ImpInventory _impInventory;
-        private IInteractablesHolder _interactablesHolder;
+        private InteractablesHolder _interactablesHolder;
         private ItemsFactory _itemsFactory;
 
         [SerializeField] private EItemId _itemId;
 
         [Inject]
-        public void Construct(ImpInventory impInventory, IInteractablesHolder interactablesHolder, ItemsFactory itemsFactory)
+        public void Construct(ImpInventory impInventory, InteractablesHolder interactablesHolder, ItemsFactory itemsFactory)
         {
             _impInventory = impInventory;
             _interactablesHolder = interactablesHolder;
