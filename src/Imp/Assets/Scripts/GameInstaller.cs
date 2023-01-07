@@ -12,11 +12,13 @@ namespace Imp
         public InventoryView _inventoryView;
         public InteractInfo _interactInfoPrefab;
         public QuestScrollView _questScrollView;
+        public AnimationDataProvider _animationDataProvider;
 
         public override void InstallBindings()
         {
             Container.Bind<ImpSettings>().FromInstance(_impSettings).AsSingle();
             Container.Bind<ItemsSpriteData>().FromInstance(_itemsSpriteData).AsSingle();
+            Container.Bind<AnimationDataProvider>().FromInstance(_animationDataProvider).AsSingle();
 
             var impGameObject = Container
                 .InstantiatePrefabForComponent<ImpGameObject>(_impPrefab, _startPoint.position, Quaternion.identity, null);
@@ -44,6 +46,10 @@ namespace Imp
             Container.Bind<ItemsFactory>().To<ItemsFactory>().AsSingle();
             Container.Bind<ImpInventory>().To<ImpInventory>().AsSingle();
             Container.Bind<InventoryPresenter>().To<InventoryPresenter>().AsSingle().NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<AnimationPlayerTicker>().AsSingle();
+            Container.BindInterfacesAndSelfTo<AnimationPlayer>().AsTransient();
+            Container.BindInterfacesAndSelfTo<ImpAnimator>().AsSingle().NonLazy();
         }
     }
 }

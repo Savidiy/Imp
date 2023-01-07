@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -274731036, guid: 6b4dba8908bcb1f4a958be2121b00fa6, type: 3}
+  m_Sprite: {fileID: 1223230401, guid: 5f808d8b7e17ca04f999bea54c49cda3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -140,6 +140,7 @@ MonoBehaviour:
   _dangerousTerrainCounter: 0
   _warningTerrainCounter: 0
   Rigidbody2D: {fileID: 4588624496652721911}
+  SpriteRenderer: {fileID: 3086557965493727073}
 --- !u!50 &4588624496652721911
 Rigidbody2D:
   serializedVersion: 4
@@ -186,9 +187,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4765386320839934914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.014, y: 0.056, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.037, y: 0.022, z: 0}
+  m_LocalScale: {x: 0.64, y: 0.64, z: 0.64}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3086557966215386070}
   m_RootOrder: 1

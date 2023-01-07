@@ -14,6 +14,7 @@ namespace Imp
         public bool IsInDangerousTerrain => _dangerousTerrainCounter > 0;
         
         public Rigidbody2D Rigidbody2D;
+        public SpriteRenderer SpriteRenderer;
 
         private void OnTriggerEnter2D(Collider2D col)
         {

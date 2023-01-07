@@ -267,6 +267,7 @@ MonoBehaviour:
   _inventoryView: {fileID: 1013524140}
   _interactInfoPrefab: {fileID: -2829052632306564650, guid: b2f7741cdab79484dbc0874a5160f29b, type: 3}
   _questScrollView: {fileID: 624368030}
+  _animationDataProvider: {fileID: 11400000, guid: be42ef62881c8634e9ef47040394d919, type: 2}
 --- !u!1001 &227351004
 PrefabInstance:
   m_ObjectHideFlags: 0
