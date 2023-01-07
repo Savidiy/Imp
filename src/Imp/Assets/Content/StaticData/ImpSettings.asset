@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: ImpSettings
   m_EditorClassIdentifier: 
   WalkSpeed: 2.5
+  InteractSquareDistance: 0.2
+  InventorySize: 3
+  CameraShift: {x: 0, y: 0.3, z: -3}

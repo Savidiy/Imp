@@ -8,5 +8,6 @@ namespace Imp
         public float WalkSpeed = 2.5f;
         public float InteractSquareDistance = 0.2f;
         public int InventorySize = 3;
+        public Vector3 CameraShift;
     }
 }

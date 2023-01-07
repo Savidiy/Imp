@@ -17,22 +17,24 @@ namespace Imp
         {
             Container.Bind<ImpSettings>().FromInstance(_impSettings).AsSingle();
             Container.Bind<ItemsSpriteData>().FromInstance(_itemsSpriteData).AsSingle();
-            
+
             var impGameObject = Container.InstantiatePrefabForComponent<ImpGameObject>(_impPrefab, _startPoint);
             Container.Bind<ImpGameObject>().FromInstance(impGameObject);
-            
+
             Container.Bind<IInteractablesHolder>().FromInstance(_interactablesHolder);
             Container.Bind<InventoryView>().FromInstance(_inventoryView);
             Container.Bind<QuestScrollView>().FromInstance(_questScrollView);
-            
+
             Container.BindInterfacesAndSelfTo<NearInteractableChecker>().AsSingle();
             Container.BindInterfacesAndSelfTo<ImpInteract>().AsSingle();
             Container.BindInterfacesAndSelfTo<ImpMove>().AsSingle();
 
+            Container.BindInterfacesAndSelfTo<CameraToObjectObserver>().AsSingle();
+
             Container.BindInterfacesAndSelfTo<QuestGenerator>().AsSingle();
             Container.BindInterfacesAndSelfTo<QuestHolder>().AsSingle();
             Container.BindInterfacesAndSelfTo<QuestScrollPresenter>().AsSingle();
-            
+
             Container.Bind<ItemsFactory>().To<ItemsFactory>().AsSingle();
             Container.Bind<ImpInventory>().To<ImpInventory>().AsSingle();
             Container.Bind<InventoryPresenter>().To<InventoryPresenter>().AsSingle().NonLazy();
