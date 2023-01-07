@@ -18,7 +18,8 @@ namespace Imp
             Container.Bind<ImpSettings>().FromInstance(_impSettings).AsSingle();
             Container.Bind<ItemsSpriteData>().FromInstance(_itemsSpriteData).AsSingle();
 
-            var impGameObject = Container.InstantiatePrefabForComponent<ImpGameObject>(_impPrefab, _startPoint);
+            var impGameObject = Container
+                .InstantiatePrefabForComponent<ImpGameObject>(_impPrefab, _startPoint.position, Quaternion.identity, null);
             Container.Bind<ImpGameObject>().FromInstance(impGameObject);
 
             Container.Bind<IInteractablesHolder>().FromInstance(_interactablesHolder);

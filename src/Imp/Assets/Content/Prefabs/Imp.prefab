@@ -131,6 +131,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa9a6af8088433794c246fd1ba12883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dangerousTerrainLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  _warningTerrainLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  _dangerousTerrainCounter: 0
+  _warningTerrainCounter: 0
   Rigidbody2D: {fileID: 4588624496652721911}
 --- !u!50 &4588624496652721911
 Rigidbody2D:
