@@ -1,9 +1,13 @@
-﻿namespace Imp
+﻿using System;
+
+namespace Imp
 {
     internal sealed class QuestHolder
     {
         private readonly QuestGenerator _questGenerator;
-        private Quest _quest;
+
+        public Quest Quest { get; private set; }
+        public event Action QuestUpdated;
 
         public QuestHolder(QuestGenerator questGenerator)
         {
@@ -13,14 +17,16 @@
 
         private void GenerateNewQuest()
         {
-            _quest = _questGenerator.GenerateNewQuest();
+            Quest = _questGenerator.GenerateNewQuest();
         }
 
         public void AddItem(Item item)
         {
-            _quest.AddItem(item);
-            if (_quest.IsCompleted)
+            Quest.AddItem(item);
+            if (Quest.IsCompleted)
                 GenerateNewQuest();
+            
+            QuestUpdated?.Invoke();
         }
     }
 }

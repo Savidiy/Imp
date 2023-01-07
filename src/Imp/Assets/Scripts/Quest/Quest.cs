@@ -5,7 +5,9 @@ namespace Imp
     internal sealed class Quest
     {
         private readonly List<QuestTarget> _targets;
+
         public bool IsCompleted { get; private set; }
+        public IReadOnlyList<QuestTarget> Targets => _targets;
 
         public Quest(List<QuestTarget> targets)
         {

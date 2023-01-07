@@ -10,6 +10,7 @@ namespace Imp
         public ImpSettings _impSettings;
         public ItemsSpriteData _itemsSpriteData;
         public InventoryView _inventoryView;
+        public QuestScrollView _questScrollView;
         public InteractablesHolder _interactablesHolder;
 
         public override void InstallBindings()
@@ -22,6 +23,7 @@ namespace Imp
             
             Container.Bind<IInteractablesHolder>().FromInstance(_interactablesHolder);
             Container.Bind<InventoryView>().FromInstance(_inventoryView);
+            Container.Bind<QuestScrollView>().FromInstance(_questScrollView);
             
             Container.BindInterfacesAndSelfTo<NearInteractableChecker>().AsSingle();
             Container.BindInterfacesAndSelfTo<ImpInteract>().AsSingle();
@@ -29,6 +31,7 @@ namespace Imp
 
             Container.BindInterfacesAndSelfTo<QuestGenerator>().AsSingle();
             Container.BindInterfacesAndSelfTo<QuestHolder>().AsSingle();
+            Container.BindInterfacesAndSelfTo<QuestScrollPresenter>().AsSingle();
             
             Container.Bind<ItemsFactory>().To<ItemsFactory>().AsSingle();
             Container.Bind<ImpInventory>().To<ImpInventory>().AsSingle();
