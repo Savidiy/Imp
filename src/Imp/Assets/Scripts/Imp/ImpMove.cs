@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Imp
 {
-    public class ImpMover : MonoBehaviour
+    public class ImpMove : MonoBehaviour
     {
         [SerializeField] private float _walkSpeed = 10f;
 
