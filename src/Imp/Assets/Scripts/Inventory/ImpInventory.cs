@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Imp
 {
@@ -8,8 +8,12 @@ namespace Imp
         private readonly List<Item> _items = new List<Item>();
         private readonly ImpSettings _impSettings;
 
-        public bool IsFull => _items.Count >= _impSettings.InventorySize;
+        public IReadOnlyList<Item> Items => _items;
+        public bool IsFull => _items.Count >= Size;
+        public int Size => _impSettings.InventorySize;
 
+        public event Action InventoryUpdated;
+        
         public ImpInventory(ImpSettings impSettings)
         {
             _impSettings = impSettings;
@@ -18,6 +22,7 @@ namespace Imp
         public void AddItem(Item item)
         {
             _items.Add(item);
+            InventoryUpdated?.Invoke();
         }
     }
 }
