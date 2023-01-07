@@ -208,7 +208,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,7 +229,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -237,6 +237,27 @@ TextureImporter:
       bones: []
       spriteID: d963bb1ec9aba96479722d7da7cfc9d4
       internalID: 1837700932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 189
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 6, y: 0, z: 8, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3459c532c39489040b1217e7bc1aa082
+      internalID: 1265771560
       vertices: []
       indices: 
       edges: []
@@ -253,6 +274,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       InventoryCell: -355124471
+      Props_0: 1265771560
       Mushroom3: -916708968
       Unknown: 1837700932
       PickUpInfo: 1427164882

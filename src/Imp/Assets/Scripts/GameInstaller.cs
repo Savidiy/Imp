@@ -27,6 +27,9 @@ namespace Imp
             Container.BindInterfacesAndSelfTo<ImpInteract>().AsSingle();
             Container.BindInterfacesAndSelfTo<ImpMove>().AsSingle();
 
+            Container.BindInterfacesAndSelfTo<QuestGenerator>().AsSingle();
+            Container.BindInterfacesAndSelfTo<QuestHolder>().AsSingle();
+            
             Container.Bind<ItemsFactory>().To<ItemsFactory>().AsSingle();
             Container.Bind<ImpInventory>().To<ImpInventory>().AsSingle();
             Container.Bind<InventoryPresenter>().To<InventoryPresenter>().AsSingle().NonLazy();

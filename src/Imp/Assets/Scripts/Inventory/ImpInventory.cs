@@ -24,5 +24,11 @@ namespace Imp
             _items.Add(item);
             InventoryUpdated?.Invoke();
         }
+
+        public void Clear()
+        {
+            _items.Clear();
+            InventoryUpdated?.Invoke();
+        }
     }
 }
