@@ -2,6 +2,7 @@
 
 namespace Imp
 {
+    [RequireComponent(typeof(Interactable))]
     internal sealed class PickUpInteractLogic : MonoBehaviour, IInteractLogic
     {
         private ImpInventory _impInventory;
