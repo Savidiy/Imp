@@ -3,28 +3,33 @@ using Zenject;
 
 namespace Imp
 {
-    internal sealed class ImpMove : ITickable
+    internal sealed class ImpMove : IFixedTickable
     {
         private readonly ImpSettings _impSettings;
         private readonly Transform _transform;
+        private readonly ImpGameObject _impGameObject;
 
         public ImpMove(ImpGameObject impGameObject, ImpSettings impSettings)
         {
             _impSettings = impSettings;
-            _transform = impGameObject.transform;
+            _impGameObject = impGameObject;
         }
 
-        public void Tick()
+        public void FixedTick()
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
+            
+            Vector3 position = _impGameObject.transform.position;
+            float deltaTime = Time.fixedDeltaTime;
 
-            Vector3 position = _transform.position;
-            float deltaTime = Time.deltaTime;
-            position.x += horizontal * _impSettings.WalkSpeed * deltaTime;
-            position.y += vertical * _impSettings.WalkSpeed * deltaTime;
-            position.z = position.y;
-            _transform.position = position;
+            float deltaX = horizontal * _impSettings.WalkSpeed * deltaTime;
+            float positionX = position.x + deltaX;
+            float deltaY = vertical * _impSettings.WalkSpeed * deltaTime;
+            float positionY = position.y + deltaY;
+
+            _impGameObject.Rigidbody2D.MovePosition(new Vector2(positionX, positionY));
+            _impGameObject.Rigidbody2D.transform.position = new Vector3(positionX, positionY, positionY);
         }
     }
 }
