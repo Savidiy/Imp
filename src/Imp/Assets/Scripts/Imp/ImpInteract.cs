@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
+using Zenject;
 
 namespace Imp
 {
-    internal sealed class ImpInteract : MonoBehaviour
+    internal sealed class ImpInteract : ITickable
     {
-        private NearInteractableChecker _nearInteractableChecker;
+        private readonly NearInteractableChecker _nearInteractableChecker;
 
-        private void Start()
+        public ImpInteract(NearInteractableChecker nearInteractableChecker)
         {
-            _nearInteractableChecker = FindObjectOfType<NearInteractableChecker>();
+            _nearInteractableChecker = nearInteractableChecker;
         }
 
-        private void Update()
+        public void Tick()
         {
             if (Input.GetKeyDown(KeyCode.E) && _nearInteractableChecker.HasNearInteractable)
             {

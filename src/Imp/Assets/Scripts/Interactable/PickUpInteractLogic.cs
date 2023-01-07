@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Zenject;
 
 namespace Imp
 {
@@ -6,16 +7,17 @@ namespace Imp
     internal sealed class PickUpInteractLogic : MonoBehaviour, IInteractLogic
     {
         private ImpInventory _impInventory;
-        private InteractablesHolder _interactablesHolder;
+        private IInteractablesHolder _interactablesHolder;
         private ItemsFactory _itemsFactory;
 
         [SerializeField] private EItemId _itemId;
 
-        private void Start()
+        [Inject]
+        public void Construct(ImpInventory impInventory, IInteractablesHolder interactablesHolder, ItemsFactory itemsFactory)
         {
-            _impInventory = FindObjectOfType<ImpInventory>();
-            _interactablesHolder = FindObjectOfType<InteractablesHolder>();
-            _itemsFactory = new ItemsFactory();
+            _impInventory = impInventory;
+            _interactablesHolder = interactablesHolder;
+            _itemsFactory = itemsFactory;
         }
 
         public void Interact(Interactable interactable)

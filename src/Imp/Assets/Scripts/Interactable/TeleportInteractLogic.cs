@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Zenject;
 
 namespace Imp
 {
@@ -7,18 +8,19 @@ namespace Imp
     {
         [SerializeField] private Transform _targetPosition;
         [SerializeField] private Vector3 _shiftAfterTeleport;
-        private ImpMove _impMove;
+        private Transform _transform;
 
-        private void Awake()
+        [Inject]
+        public void Construct(ImpGameObject impGameObject)
         {
-            _impMove = FindObjectOfType<ImpMove>();
+            _transform = impGameObject.transform;
         }
 
         public void Interact(Interactable interactable)
         {
             Vector3 position = _targetPosition.position;
             position += _shiftAfterTeleport;
-            _impMove.transform.position = position;
+            _transform.position = position;
         }
     }
 }

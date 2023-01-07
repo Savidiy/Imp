@@ -3,13 +3,18 @@ using UnityEngine;
 
 namespace Imp
 {
-    internal class ImpInventory : MonoBehaviour
+    internal class ImpInventory
     {
-        private int _size = 3;
         private readonly List<Item> _items = new List<Item>();
+        private readonly ImpSettings _impSettings;
 
-        public bool IsFull => _items.Count == _size;
+        public bool IsFull => _items.Count >= _impSettings.InventorySize;
 
+        public ImpInventory(ImpSettings impSettings)
+        {
+            _impSettings = impSettings;
+        }
+        
         public void AddItem(Item item)
         {
             _items.Add(item);

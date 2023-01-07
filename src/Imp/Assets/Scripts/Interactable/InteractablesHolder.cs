@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Imp
 {
-    internal sealed class InteractablesHolder : MonoBehaviour
+    internal sealed class InteractablesHolder : MonoBehaviour, IInteractablesHolder
     {
         private List<Interactable> _interactables;
         public IReadOnlyList<Interactable> Interactables => _interactables;

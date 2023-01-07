@@ -1,22 +1,30 @@
 using UnityEngine;
+using Zenject;
 
 namespace Imp
 {
-    public class ImpMove : MonoBehaviour
+    internal sealed class ImpMove : ITickable
     {
-        [SerializeField] private float _walkSpeed = 10f;
+        private readonly ImpSettings _impSettings;
+        private readonly Transform _transform;
 
-        void Update()
+        public ImpMove(ImpGameObject impGameObject, ImpSettings impSettings)
+        {
+            _impSettings = impSettings;
+            _transform = impGameObject.transform;
+        }
+
+        public void Tick()
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
-            Vector3 position = transform.position;
+            Vector3 position = _transform.position;
             float deltaTime = Time.deltaTime;
-            position.x += horizontal * _walkSpeed * deltaTime;
-            position.y += vertical * _walkSpeed * deltaTime;
+            position.x += horizontal * _impSettings.WalkSpeed * deltaTime;
+            position.y += vertical * _impSettings.WalkSpeed * deltaTime;
             position.z = position.y;
-            transform.position = position;
+            _transform.position = position;
         }
     }
 }

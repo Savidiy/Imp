@@ -1,25 +1,28 @@
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Imp
 {
-    public class NearInteractableChecker : MonoBehaviour
+    internal sealed class NearInteractableChecker : ITickable
     {
-        [SerializeField] private Transform _impTransform;
-        [SerializeField] private float _interactSquareDistance = 0.2f;
-        private InteractablesHolder _interactableHolder;
+        private readonly IInteractablesHolder _interactableHolder;
+        private readonly ImpSettings _impSettings;
+        private readonly Transform _impTransform;
 
         private readonly ReactiveProperty<Interactable> _nearInteractable = new();
 
         public bool HasNearInteractable { get; private set; }
         public IReadOnlyReactiveProperty<Interactable> NearInteractable => _nearInteractable;
 
-        private void Start()
+        public NearInteractableChecker(IInteractablesHolder interactableHolder, ImpGameObject impGameObject, ImpSettings impSettings)
         {
-            _interactableHolder = FindObjectOfType<InteractablesHolder>();
+            _interactableHolder = interactableHolder;
+            _impSettings = impSettings;
+            _impTransform = impGameObject.transform;
         }
 
-        private void Update()
+        public void Tick()
         {
             Interactable nearestInteractable = null;
             float minimalSquareDistance = float.MaxValue;
@@ -29,15 +32,12 @@ namespace Imp
                 Vector3 deltaPosition = pickupable.transform.position - _impTransform.position;
                 deltaPosition.z = 0;
                 float sqrMagnitude = deltaPosition.sqrMagnitude;
-                if (sqrMagnitude < _interactSquareDistance && sqrMagnitude < minimalSquareDistance)
+                if (sqrMagnitude < _impSettings.InteractSquareDistance && sqrMagnitude < minimalSquareDistance)
                 {
                     nearestInteractable = pickupable;
                     minimalSquareDistance = sqrMagnitude;
                 }
             }
-
-            if (_nearInteractable.Value == nearestInteractable)
-                return;
 
             HasNearInteractable = nearestInteractable != null;
             _nearInteractable.Value = nearestInteractable;
