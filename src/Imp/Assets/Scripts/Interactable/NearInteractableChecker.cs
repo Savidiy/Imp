@@ -27,14 +27,17 @@ namespace Imp
             Interactable nearestInteractable = null;
             float minimalSquareDistance = float.MaxValue;
 
-            foreach (Interactable pickupable in _interactableHolder.Interactables)
+            foreach (Interactable interactable in _interactableHolder.Interactables)
             {
-                Vector3 deltaPosition = pickupable.transform.position - _impTransform.position;
+                if (!interactable.gameObject.activeInHierarchy)
+                    continue;
+
+                Vector3 deltaPosition = interactable.transform.position - _impTransform.position;
                 deltaPosition.z = 0;
                 float sqrMagnitude = deltaPosition.sqrMagnitude;
                 if (sqrMagnitude < _impSettings.InteractSquareDistance && sqrMagnitude < minimalSquareDistance)
                 {
-                    nearestInteractable = pickupable;
+                    nearestInteractable = interactable;
                     minimalSquareDistance = sqrMagnitude;
                 }
             }

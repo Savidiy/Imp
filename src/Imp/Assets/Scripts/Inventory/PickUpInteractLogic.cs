@@ -7,16 +7,14 @@ namespace Imp
     internal sealed class PickUpInteractLogic : MonoBehaviour, IInteractLogic
     {
         private ImpInventory _impInventory;
-        private InteractablesHolder _interactablesHolder;
         private ItemsFactory _itemsFactory;
 
         [SerializeField] private EItemId _itemId;
 
         [Inject]
-        public void Construct(ImpInventory impInventory, InteractablesHolder interactablesHolder, ItemsFactory itemsFactory)
+        public void Construct(ImpInventory impInventory, ItemsFactory itemsFactory)
         {
             _impInventory = impInventory;
-            _interactablesHolder = interactablesHolder;
             _itemsFactory = itemsFactory;
         }
 
@@ -31,7 +29,7 @@ namespace Imp
             // play pickup sound
             Item item = _itemsFactory.Create(_itemId);
             _impInventory.AddItem(item);
-            _interactablesHolder.Remove(interactable);
+            interactable.gameObject.SetActive(false);
         }
     }
 }
