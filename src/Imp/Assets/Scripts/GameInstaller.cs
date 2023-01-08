@@ -38,6 +38,7 @@ namespace Imp
             Container.BindInterfacesAndSelfTo<NearInteractableChecker>().AsSingle();
             Container.BindInterfacesAndSelfTo<ImpInteract>().AsSingle();
             Container.BindInterfacesAndSelfTo<ImpMove>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ImpControlLocker>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<CameraToObjectObserver>().AsSingle();
 

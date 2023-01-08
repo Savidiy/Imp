@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -9,13 +10,15 @@ namespace Imp
         private readonly InteractablesHolder _interactableHolder;
         private readonly ImpSettings _impSettings;
         private readonly Transform _impTransform;
-
         private readonly ReactiveProperty<Interactable> _nearInteractable = new();
+
+        private bool _isLocked;
 
         public bool HasNearInteractable { get; private set; }
         public IReadOnlyReactiveProperty<Interactable> NearInteractable => _nearInteractable;
 
-        public NearInteractableChecker(InteractablesHolder interactableHolder, ImpGameObject impGameObject, ImpSettings impSettings)
+        public NearInteractableChecker(InteractablesHolder interactableHolder, ImpGameObject impGameObject,
+            ImpSettings impSettings)
         {
             _interactableHolder = interactableHolder;
             _impSettings = impSettings;
@@ -23,6 +26,21 @@ namespace Imp
         }
 
         public void Tick()
+        {
+            if (_isLocked)
+            {
+                HasNearInteractable = false;
+            }
+            else
+            {
+                Interactable nearestInteractable = FindNearestInteractable();
+                HasNearInteractable = nearestInteractable != null;
+                _nearInteractable.Value = nearestInteractable;
+            }
+        }
+
+        [CanBeNull]
+        private Interactable FindNearestInteractable()
         {
             Interactable nearestInteractable = null;
             float minimalSquareDistance = float.MaxValue;
@@ -42,8 +60,10 @@ namespace Imp
                 }
             }
 
-            HasNearInteractable = nearestInteractable != null;
-            _nearInteractable.Value = nearestInteractable;
+            return nearestInteractable;
         }
+
+        public void Lock() => _isLocked = true;
+        public void Unlock() => _isLocked = false;
     }
 }

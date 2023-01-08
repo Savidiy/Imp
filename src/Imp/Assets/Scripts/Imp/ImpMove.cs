@@ -10,6 +10,7 @@ namespace Imp
         private readonly Transform _transform;
         private readonly ImpGameObject _impGameObject;
         private EMoveState _lastMoveDirection = EMoveState.WalkRight;
+        private bool _isLocked;
 
         public EMoveState MoveState { get; private set; } = EMoveState.Idle;
 
@@ -21,6 +22,9 @@ namespace Imp
 
         public void FixedTick()
         {
+            if (_isLocked)
+                return;
+            
             Vector2 inputVector = GetInputVector();
             MoveImp(inputVector);
             FindMoveState(inputVector);
@@ -63,5 +67,8 @@ namespace Imp
             else
                 MoveState = _lastMoveDirection;
         }
+
+        public void Lock() => _isLocked = true;
+        public void Unlock() => _isLocked = false;
     }
 }
