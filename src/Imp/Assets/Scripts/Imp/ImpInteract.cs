@@ -14,11 +14,16 @@ namespace Imp
 
         public void Tick()
         {
-            if (Input.GetKeyDown(KeyCode.E) && _nearInteractableChecker.HasNearInteractable)
+            if (IsKeyDown() && _nearInteractableChecker.HasNearInteractable)
             {
                 Interactable interactable = _nearInteractableChecker.NearInteractable.Value;
                 interactable.Interact();
             }
+        }
+
+        private static bool IsKeyDown()
+        {
+            return Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space);
         }
     }
 }
