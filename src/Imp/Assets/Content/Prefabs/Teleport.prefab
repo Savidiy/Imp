@@ -176,4 +176,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetPosition: {fileID: 0}
-  _shiftAfterTeleport: {x: 0, y: -0.05, z: 0}
+  _shiftAfterTeleport: {x: -0.1, y: -0.1, z: 0}
