@@ -43,5 +43,13 @@ namespace Imp
                 _itemViews[i].SetupEmptyView();
             }
         }
+
+        public void ShowWarning()
+        {
+            for (var i = 0; i < _itemViews.Count; i++)
+            {
+                _itemViews[i].ShowWarning();
+            }
+        }
     }
 }

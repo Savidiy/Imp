@@ -51,7 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a25f3b9bfb44faab3137afa6edb94c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _image: {fileID: 5204587127592213252}
+  _itemImage: {fileID: 5204587127592213252}
+  _backgroundImage: {fileID: 5023134620623939902}
+  _warningColor: {r: 0.9716981, g: 0, b: 0, a: 1}
+  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  _warningDuration: 1
 --- !u!1 &6940759421100682750
 GameObject:
   m_ObjectHideFlags: 0

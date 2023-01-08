@@ -28,7 +28,7 @@ namespace Imp
 
         public void ShowWarning()
         {
-            Debug.Log("Inventory warning");
+            _inventoryView.ShowWarning();
         }
     }
 }
