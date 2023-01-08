@@ -11,14 +11,21 @@ namespace Imp
         {
             _questScrollView = questScrollView;
             _questHolder = questHolder;
-            
+
             _questHolder.QuestUpdated += OnQuestUpdated;
             OnQuestUpdated();
         }
 
         private void OnQuestUpdated()
         {
-            _questScrollView.ShowQuest(_questHolder.Quest);
+            if (!_questHolder.HasQuest || _questHolder.Quest.IsCompleted)
+            {
+                _questScrollView.Hide();
+            }
+            else
+            {
+                _questScrollView.ShowQuest(_questHolder.Quest);
+            }
         }
 
         public void Dispose()

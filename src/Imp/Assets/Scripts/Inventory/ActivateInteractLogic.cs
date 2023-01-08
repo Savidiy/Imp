@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 namespace Imp
 {
@@ -8,6 +7,7 @@ namespace Imp
     internal sealed class ActivateInteractLogic : MonoBehaviour, IInteractLogic
     {
         [SerializeField] private List<GameObject> _parentsOfActivatedObjects;
+        [SerializeField] private List<GameObject> _activatedObjects;
 
         public void Interact(Interactable interactable)
         {
@@ -20,6 +20,11 @@ namespace Imp
                     Transform child = parentTransform.GetChild(i);
                     child.gameObject.SetActive(true);
                 }
+            }
+
+            foreach (GameObject activatedObject in _activatedObjects)
+            {
+                activatedObject.SetActive(true);
             }
         }
     }

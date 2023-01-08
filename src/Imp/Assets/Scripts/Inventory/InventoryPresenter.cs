@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Imp
 {
@@ -23,6 +24,11 @@ namespace Imp
         public void Dispose()
         {
             _impInventory.InventoryUpdated -= OnInventoryUpdated;
+        }
+
+        public void ShowWarning()
+        {
+            Debug.Log("Inventory warning");
         }
     }
 }

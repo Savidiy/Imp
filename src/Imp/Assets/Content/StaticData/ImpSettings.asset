@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def7e466d5814b16aee1f2fc2473f6cf, type: 3}
   m_Name: ImpSettings
   m_EditorClassIdentifier: 
-  WalkSpeed: 2.5
+  WalkSpeed: 3
   InteractSquareDistance: 0.2
   InventorySize: 3
   CameraShift: {x: 0, y: 0.3, z: -10}

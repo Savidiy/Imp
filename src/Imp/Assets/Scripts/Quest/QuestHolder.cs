@@ -4,28 +4,33 @@ namespace Imp
 {
     internal sealed class QuestHolder
     {
-        private readonly QuestGenerator _questGenerator;
+        private readonly QuestProvider _questProvider;
 
+        public bool HasQuest { get; private set; }
         public Quest Quest { get; private set; }
         public event Action QuestUpdated;
 
-        public QuestHolder(QuestGenerator questGenerator)
+        public QuestHolder(QuestProvider questProvider)
         {
-            _questGenerator = questGenerator;
-            GenerateNewQuest();
+            _questProvider = questProvider;
         }
-
-        private void GenerateNewQuest()
+        
+        public void ActivateNextQuest()
         {
-            Quest = _questGenerator.GenerateNewQuest();
+            if (!_questProvider.HasNextQuest)
+            {
+                HasQuest = false;
+                return;
+            }
+                
+            Quest = _questProvider.GetNextQuest();
+            HasQuest = true;
+            QuestUpdated?.Invoke();
         }
 
         public void AddItem(Item item)
         {
             Quest.AddItem(item);
-            if (Quest.IsCompleted)
-                GenerateNewQuest();
-            
             QuestUpdated?.Invoke();
         }
     }

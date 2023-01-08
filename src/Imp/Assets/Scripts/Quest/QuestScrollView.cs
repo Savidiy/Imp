@@ -22,6 +22,12 @@ namespace Imp
         {
             CorrectViewCount(quest.Targets.Count);
             UpdateViews(quest.Targets);
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
         }
 
         private void UpdateViews(IReadOnlyList<QuestTarget> targets)

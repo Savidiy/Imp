@@ -13,12 +13,14 @@ namespace Imp
         public InteractInfo _interactInfoPrefab;
         public QuestScrollView _questScrollView;
         public AnimationDataProvider _animationDataProvider;
+        public LevelQuestData _levelQuestData;
 
         public override void InstallBindings()
         {
             Container.Bind<ImpSettings>().FromInstance(_impSettings).AsSingle();
             Container.Bind<ItemsSpriteData>().FromInstance(_itemsSpriteData).AsSingle();
             Container.Bind<AnimationDataProvider>().FromInstance(_animationDataProvider).AsSingle();
+            Container.Bind<LevelQuestData>().FromInstance(_levelQuestData).AsSingle();
 
             var impGameObject = Container
                 .InstantiatePrefabForComponent<ImpGameObject>(_impPrefab, _startPoint.position, Quaternion.identity, null);
@@ -39,7 +41,7 @@ namespace Imp
 
             Container.BindInterfacesAndSelfTo<CameraToObjectObserver>().AsSingle();
 
-            Container.BindInterfacesAndSelfTo<QuestGenerator>().AsSingle();
+            Container.BindInterfacesAndSelfTo<QuestProvider>().AsSingle();
             Container.BindInterfacesAndSelfTo<QuestHolder>().AsSingle();
             Container.BindInterfacesAndSelfTo<QuestScrollPresenter>().AsSingle();
 

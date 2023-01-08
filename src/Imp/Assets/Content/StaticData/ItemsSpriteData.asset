@@ -22,3 +22,9 @@ MonoBehaviour:
     Sprite: {fileID: -577905933, guid: 59add219f8f62a74a9b9b9e8115f7fc2, type: 3}
   - ItemId: 3
     Sprite: {fileID: -916708968, guid: 59add219f8f62a74a9b9b9e8115f7fc2, type: 3}
+  - ItemId: 4
+    Sprite: {fileID: 140588303, guid: 59add219f8f62a74a9b9b9e8115f7fc2, type: 3}
+  - ItemId: 5
+    Sprite: {fileID: -927744049, guid: 59add219f8f62a74a9b9b9e8115f7fc2, type: 3}
+  - ItemId: 6
+    Sprite: {fileID: 601902026, guid: 59add219f8f62a74a9b9b9e8115f7fc2, type: 3}

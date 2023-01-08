@@ -10,10 +10,12 @@ namespace Imp
         private ItemsFactory _itemsFactory;
 
         [SerializeField] private EItemId _itemId;
+        private InventoryPresenter _inventoryPresenter;
 
         [Inject]
-        public void Construct(ImpInventory impInventory, ItemsFactory itemsFactory)
+        public void Construct(ImpInventory impInventory, ItemsFactory itemsFactory, InventoryPresenter inventoryPresenter)
         {
+            _inventoryPresenter = inventoryPresenter;
             _impInventory = impInventory;
             _itemsFactory = itemsFactory;
         }
@@ -23,6 +25,7 @@ namespace Imp
             if (_impInventory.IsFull)
             {
                 // play beep sound
+                _inventoryPresenter.ShowWarning();
                 return;
             }
 

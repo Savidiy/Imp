@@ -13,21 +13,21 @@ namespace Imp
         public int Size => _impSettings.InventorySize;
 
         public event Action InventoryUpdated;
-        
+
         public ImpInventory(ImpSettings impSettings)
         {
             _impSettings = impSettings;
         }
-        
+
         public void AddItem(Item item)
         {
             _items.Add(item);
             InventoryUpdated?.Invoke();
         }
 
-        public void Clear()
+        public void RemoveAt(int index)
         {
-            _items.Clear();
+            _items.RemoveAt(index);
             InventoryUpdated?.Invoke();
         }
     }

@@ -11,7 +11,7 @@ namespace Imp
 
         public InteractablesHolder()
         {
-            _interactables = Object.FindObjectsOfType<Interactable>().ToList();
+            _interactables = Object.FindObjectsOfType<Interactable>(includeInactive: true).ToList();
         }
 
         public void Remove(Interactable interactable)
