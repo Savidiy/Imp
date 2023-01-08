@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using static Imp.EAnimationId;
 using Random = UnityEngine.Random;
 
 namespace Imp
@@ -12,6 +14,8 @@ namespace Imp
         private readonly AnimationPlayer _animationPlayer;
         private EMoveState _currentMoveState = EMoveState.None;
         private readonly SpriteRenderer _spriteRenderer;
+
+        private List<EAnimationId> _idleAnimations = new() {ImpIdle1, ImpIdle2, ImpIdle3, ImpIdle4, ImpIdle5, ImpIdle6};
 
         public ImpAnimator(ImpMove impMove, AnimationDataProvider animationDataProvider, AnimationPlayer animationPlayer,
             ImpGameObject impGameObject)
@@ -34,8 +38,8 @@ namespace Imp
             AnimationData data = _currentMoveState switch
             {
                 EMoveState.Idle => _animationDataProvider.GetData(GetRandomIdleAnimation()),
-                EMoveState.WalkLeft => _animationDataProvider.GetData(EAnimationId.ImpWalk),
-                EMoveState.WalkRight => _animationDataProvider.GetData(EAnimationId.ImpWalk),
+                EMoveState.WalkLeft => _animationDataProvider.GetData(ImpWalk),
+                EMoveState.WalkRight => _animationDataProvider.GetData(ImpWalk),
                 _ => throw new ArgumentOutOfRangeException()
             };
 
@@ -57,11 +61,11 @@ namespace Imp
             _animationPlayer.Play(data);
         }
 
-        private static EAnimationId GetRandomIdleAnimation()
+        private EAnimationId GetRandomIdleAnimation()
         {
-            int range = Random.Range(0, 4);
-
-            return range == 0 ? EAnimationId.ImpIdle2 : EAnimationId.ImpIdle1;
+            int index = Random.Range(0, _idleAnimations.Count);
+            EAnimationId animationId = _idleAnimations[index];
+            return animationId;
         }
 
         public void Dispose()

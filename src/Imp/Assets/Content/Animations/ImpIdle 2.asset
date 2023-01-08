@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c63f9c612a4447fa206f0a34b8849b0, type: 3}
-  m_Name: ImpIdle2Animation
+  m_Name: ImpIdle 2
   m_EditorClassIdentifier: 
   Speed: 10
   Data:
@@ -26,11 +26,13 @@ MonoBehaviour:
     Duration: 1
   - Sprite: {fileID: 471100356, guid: 5f808d8b7e17ca04f999bea54c49cda3, type: 3}
     Duration: 1
-  - Sprite: {fileID: 696742267, guid: 5f808d8b7e17ca04f999bea54c49cda3, type: 3}
+  - Sprite: {fileID: 1247457034, guid: 5f808d8b7e17ca04f999bea54c49cda3, type: 3}
     Duration: 1
   - Sprite: {fileID: 471100356, guid: 5f808d8b7e17ca04f999bea54c49cda3, type: 3}
     Duration: 1
-  - Sprite: {fileID: 696742267, guid: 5f808d8b7e17ca04f999bea54c49cda3, type: 3}
+  - Sprite: {fileID: 1247457034, guid: 5f808d8b7e17ca04f999bea54c49cda3, type: 3}
+    Duration: 1
+  - Sprite: {fileID: 471100356, guid: 5f808d8b7e17ca04f999bea54c49cda3, type: 3}
     Duration: 1
   - Sprite: {fileID: 1247457034, guid: 5f808d8b7e17ca04f999bea54c49cda3, type: 3}
     Duration: 1

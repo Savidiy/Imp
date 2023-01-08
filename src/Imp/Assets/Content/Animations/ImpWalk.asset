@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c63f9c612a4447fa206f0a34b8849b0, type: 3}
-  m_Name: ImpWalkAnimation
+  m_Name: ImpWalk
   m_EditorClassIdentifier: 
   Speed: 25
   Data:

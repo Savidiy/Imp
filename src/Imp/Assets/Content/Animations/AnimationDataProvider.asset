@@ -19,3 +19,11 @@ MonoBehaviour:
     AnimationData: {fileID: 11400000, guid: 5f3d076cd9d3c5d43b130bdde5f8a4f8, type: 2}
   - AnimationId: 3
     AnimationData: {fileID: 11400000, guid: 8005153caac25af408400609dc4831b2, type: 2}
+  - AnimationId: 4
+    AnimationData: {fileID: 11400000, guid: c6814ca13fa0ea04a8a420dc5fc137ed, type: 2}
+  - AnimationId: 5
+    AnimationData: {fileID: 11400000, guid: 373458bc1d6b4364a9c1e03b3eb2abe1, type: 2}
+  - AnimationId: 6
+    AnimationData: {fileID: 11400000, guid: bd2a29044dc676248bef07b924e68e2e, type: 2}
+  - AnimationId: 7
+    AnimationData: {fileID: 11400000, guid: 6afe93d41fec0bf43912cc1e5272fcfb, type: 2}
