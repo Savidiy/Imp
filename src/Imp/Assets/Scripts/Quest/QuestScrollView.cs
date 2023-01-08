@@ -27,6 +27,7 @@ namespace Imp
 
         public void Hide()
         {
+            transform.position = new Vector3(2000, 2000);
             gameObject.SetActive(false);
         }
 
